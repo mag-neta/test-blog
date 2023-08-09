@@ -1,9 +1,4 @@
 ---
-import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-const pageTitle = "magabout";
-
 const identity = {
   firstName: "サラ",
   country: "カナダ",
@@ -20,32 +15,12 @@ const goal = 3;
 const skillColor = "red";
 const fontWeight = "bold";
 const textCase = "uppercase"
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "magabout";
 ---
-
-<html lang="jp">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-
-		<style define:vars={{skillColor}}>
-			h1 {
-				color: purple;
-				font-size: 4rem;
-			}
-			.skill {
-				color: var(--skillColor);
-				font-weight: var(--fontWeight);
-    			text-transform: var(--textCase);
-			}
-		</style>
-	</head>
+<BaseLayout pageTitle="{pagetitle}">
 	<body>
-
-        <Navigation/>
-
 		<h1>{pageTitle}</h1>
         <h2>... そしてまぐの新しいAstroサイトについて！</h2>
 
@@ -71,7 +46,4 @@ const textCase = "uppercase"
         {finished && <p>I finished this tutorial! このチュートリアルを終えました！</p>}
 
         {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
-
-		<Footer />
-	</body>
-</html>
+	</BaseLayout>
